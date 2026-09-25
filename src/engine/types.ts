@@ -30,10 +30,16 @@ export type Event =
   // End of game
   | { kind: "gameEnded"; winnerId: string | null };
 
+export type Action = 
+  | { kind: "damage"; targetId: string; amount: number }
+  | { kind: "summon"; definitionId: string}
+
 export type CardInstance = {
   id: string;            // unique per copy, e.g. "c17"
   definitionId: string;  // which card it is, e.g. "xiangling"
 };
+
+export type Trigger = "battleCry" | "lastWords" | "endOfTurn" 
 
 export type HeroState = {
   id: string;            // what targetId uses to point at this hero
@@ -79,3 +85,4 @@ export type GameState = {
   nextInstanceId: number;
   result: GameResult;
 };
+
